@@ -57,3 +57,11 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 source 'http://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
+
+gem 'will_paginate', '>= 3.1'
+
+def index
+  @tasks = Task.search(params[:term], params[:page])
+end
+
+

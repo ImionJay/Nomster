@@ -61,7 +61,7 @@ end
 gem 'will_paginate', '>= 3.1'
 
 def index
-  @tasks = Task.search(params[:term], params[:page])
+  @places = Place.search(params[:term], params[:page])
 end
 
 

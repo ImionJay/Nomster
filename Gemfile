@@ -64,4 +64,7 @@ def index
   @places = Place.search(params[:term], params[:page])
 end
 
+gem 'simple_form'
+
+gem "font-awesome-rails"
 

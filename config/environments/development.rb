@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action.mailer.default_url_options = { host: 'https://firehoseproject-imionjay.c9users.io' }
+  config.action_mailer.default_url_options = { host: 'firehoseproject-imionjay.c9users.io' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

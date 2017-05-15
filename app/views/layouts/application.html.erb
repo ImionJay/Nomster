@@ -25,6 +25,17 @@
               New Place
           </li>
         </ul>
+            <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'A user is signed in!', '#', class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'No user is signed in :(', '#', class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
       </div>
     </nav>
     

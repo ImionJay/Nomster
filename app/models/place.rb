@@ -1,5 +1,3 @@
 class Place < ApplicationRecord
-    def new
-        @place = Place.new
-    end
+    belongs_to :user
 end

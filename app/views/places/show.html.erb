@@ -5,9 +5,11 @@
 <p><%= @place.description %></p>
 
 
+  <style>
     #map {
     height: 300px;
   }
+  </style>
 
 <% if @place.latitude.present? && @place.longitude.present? %>  
   
@@ -33,8 +35,8 @@
   src="https://maps.googleapis.com/maps/api/js?key=AgW8V-ubHN1wOd4iFFZjcdTOfEolIgAQxe1LRuzs38b8JvWsj-7Mnw3KQmshtRYy&callback=initMap">
   </script>
 
-<div id="map"></div>
-  <% end %>
+  <div id="map"></div>
+<% end %>
   
 <br />
 

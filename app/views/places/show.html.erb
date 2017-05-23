@@ -3,14 +3,13 @@
 <i><%= @place.address %></i>
 <br/><br/>
 <p><%= @place.description %></p>
+    
 
-
-  <style>
-    #map {
+  #map {
     height: 300px;
   }
-  </style>
 
+  
 <% if @place.latitude.present? && @place.longitude.present? %>  
   
   <script>
@@ -32,7 +31,7 @@
   </script>
 
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AgW8V-ubHN1wOd4iFFZjcdTOfEolIgAQxe1LRuzs38b8JvWsj-7Mnw3KQmshtRYy&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVuawMBhn-jgngM-mAKZFpz5gh9vU9wfo&callback=initMap">
   </script>
 
   <div id="map"></div>

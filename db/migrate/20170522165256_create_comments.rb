@@ -5,8 +5,6 @@ class CreateComments < ActiveRecord::Migration[5.0]
        t.string :rating
        t.integer :user_id
        t.integer :place_id
-       t.caption :place_id 
-       t.caption :photo_id
       t.timestamps
     end
     

@@ -1,15 +1,19 @@
 Rails.application.configure do
-    config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :test
+  #(These lines below that are also commented are needed to send live emails for when someone comments on the app. 
+  # So, uncommented them when you need to send live emails to people who add info to the app.)
+  
+    # config.action_mailer.delivery_method = :test
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV['GMAIL_ADDRESS'],
-    password: ENV['GMAIL_PASSWORD']
-  }
+  # config.action_mailer.smtp_settings = {
+  #  address: "smtp.gmail.com",
+  #  port: 587,
+  #  domain: "example.com",
+  #  authentication: "plain",
+  #  enable_starttls_auto: true,
+  #  user_name: ENV['GMAIL_ADDRESS'],
+  #  password: ENV['GMAIL_PASSWORD']
+  # }
   
   config.action_mailer.default_url_options = { host: 'firehoseproject-imionjay.c9users.io' }
   # Settings specified here will take precedence over those in config/application.rb.

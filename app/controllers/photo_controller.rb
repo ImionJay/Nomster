@@ -6,11 +6,11 @@ class PhotoController < ApplicationController
     end
     
     def new
-        @photos = Photo.new
+        @photo = Photo.new
     end
     
     def create
-        @photos = current_user.photos.create(photo_params)
+        @photo = current_user.photos.create(photo_params)
         if @photos.valid?
                 redirect_to root_path
         else
@@ -20,13 +20,12 @@ class PhotoController < ApplicationController
     
     def show
         @photos = Photo.find(params[:id])
-        @comment = Comment.new
     end
     
     def edit
-        @photos = Photo.find(params[:id])
+        @photo = Photo.find(params[:id])
         
-        if @photos.user != current_user
+        if @photo.user != current_user
             return render text: 'Not Allowed', status: :forbidden
         end
     end

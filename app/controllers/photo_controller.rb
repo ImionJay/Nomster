@@ -1,15 +1,64 @@
 class PhotoController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    
+    def index
+        @photos = Photo.paginate(:page => params[:page], :per_page => 3)
+    end
+    
+    def new
+        @photos = Photo.new
+    end
     
     def create
-        @place = Place.find(params[:place_id])
-        @place.photo.create(photo_params.merge(user: current_user))
-        redirect_to place_path(@place)
+        @photos = current_user.photos.create(photo_params)
+        if @photos.valid?
+                redirect_to root_path
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end
+    
+    def show
+        @photos = Photo.find(params[:id])
+        @comment = Comment.new
+    end
+    
+    def edit
+        @photos = Photo.find(params[:id])
+        
+        if @photos.user != current_user
+            return render text: 'Not Allowed', status: :forbidden
+        end
+    end
+    
+    def update
+        @photo = Photo.find(params[:id])
+        
+            if @photo.user != current_user
+                return render text: 'Not Allowed', status: :forbidden
+            end
+            
+        @photo.update_attributes(photo_params)
+        if @photo.valid?
+            redirect_to root_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+    
+    def destroy
+        @photo = Photo.find(params[:id])
+            if @photo.user != current_user
+                return render text: 'Not Allowed', status: :forbidden
+            end
+        @photo.destroy
+        redirect_to root_path
     end
     
     private
     
-    def comment_params
-        params.require(:photo).permit
+    def photo_params
+        params.require(:photo).permit(:name, :description, :address)
     end
+
 end

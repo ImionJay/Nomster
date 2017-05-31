@@ -13,4 +13,8 @@ class Comment < ApplicationRecord
     def humanized_rating
         RATINGS.invert[self.rating]
     end
+    
+    def send_comment_email
+        NotificationMailer.comment.added(self).deliver
+    end
 end

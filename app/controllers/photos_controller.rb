@@ -1,4 +1,4 @@
-class PhotoController < ApplicationController
+class PhotosController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     
     def index
@@ -10,12 +10,9 @@ class PhotoController < ApplicationController
     end
     
     def create
-        @photo = current_user.photos.create(photo_params)
-        if @photos.valid?
-                redirect_to root_path
-        else
-            render :new, status: :unprocessable_entity
-        end
+        @place = Place.find(params[:place_id])
+            @place.photos.create
+        redirect_to place_path(@place)
     end
     
     def show

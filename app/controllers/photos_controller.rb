@@ -10,12 +10,8 @@ class PhotosController < ApplicationController
     end
     
     def create
-       @place = current_user.places.create(place_params)
-        if @place.valid?
-                redirect_to root_path
-        else
-            render :new, status: :unprocessable_entity
-        end
+       @place = current_user.places.create(params[:page])
+        redirect_to place_path(:photo_params)
     end
     
     def show
@@ -57,7 +53,7 @@ class PhotosController < ApplicationController
     private
     
     def photo_params
-        params.require(:photo).permit(:name, :description, :address)
+        params.require(:photo).permit(:caption, :picture)
     end
 
 end

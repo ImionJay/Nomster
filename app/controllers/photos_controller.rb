@@ -10,8 +10,9 @@ class PhotosController < ApplicationController
     end
     
     def create
-       @place = current_user.places.create(params[:page])
-        redirect_to place_path(:photo_params)
+      @place = Place.find(params[:place_id])	
+        @place.photos.create(photo_params)
+            redirect_to place_path(@place) 
     end
     
     def show

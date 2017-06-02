@@ -119,6 +119,7 @@
 <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
         <div class="modal-body">
           <%= f.input :caption %>
+          mount_uploader :Picture, PictureUploader
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -134,6 +135,7 @@
 <% @place.photos.each do |photo| %>
   <div>
     <blockquote>
+      <%= image_tag photo.picture %>
         <%= photo.caption %>
          <small><%= photo.user.email %></small>
     </blockquote>

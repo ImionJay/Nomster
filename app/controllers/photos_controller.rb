@@ -10,9 +10,12 @@ class PhotosController < ApplicationController
     end
     
     def create
-        @place = Place.find(params[:place_id])
-            @place.photos.create
-        redirect_to place_path(@place)
+       @place = current_user.places.create(place_params)
+        if @place.valid?
+                redirect_to root_path
+        else
+            render :new, status: :unprocessable_entity
+        end
     end
     
     def show

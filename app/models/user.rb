@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :places
   has_many :comments
   
-  mount_uploader :Picture, PictureUploader
+  mount_uploader :picture, PictureUploader
 end

@@ -75,3 +75,5 @@ gem "geocoder"
 gem "figaro"
 
 gem 'carrierwave', '~> 1.0'
+
+ruby '2.3.4'

@@ -137,7 +137,7 @@
     <blockquote>
       <%= image_tag photo.picture %>
         <%= photo.caption %>
-         <small><%= photo.user.email %></small>
+         <% unless photo.user.nil? %><small><%= photo.user.email %></small> <% end %>
     </blockquote>
   </div>
 <% end %>

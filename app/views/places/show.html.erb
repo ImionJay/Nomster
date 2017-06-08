@@ -101,7 +101,7 @@
       <b><%= comment.humanized_rating %></b> -
       <% end %>
         <%= comment.message %>
-         <small><%= comment.user.email %></small>
+         <% unless comment.user.nil? %><small><%= comment.user.email %></small> <% end %>
     </blockquote>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
-    belongs_to :user
-    belongs_to :place
-    after_create :send_comment_email
+    belongs_to :user #The comment is in a one-to-one connection with the user
+    belongs_to :place #The comment is in a one-to-one connection with the place
+    after_create :send_comment_email #After creation this will send an email about a person leaving a comment.
     
     
     RATINGS = {
@@ -16,7 +16,7 @@ class Comment < ApplicationRecord
         RATINGS.invert[self.rating]
     end
     
-    def send_comment_email
+    def send_comment_email #This tells what "send_comment_email" does when it is called
         NotificationMailer.comment_added(self).deliver
     end
 end

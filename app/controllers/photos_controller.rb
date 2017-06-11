@@ -10,27 +10,30 @@ class PhotosController < ApplicationController
     end
     
     def create
-      @place = Place.find(params[:place_id])	
+      @place = Place.find(params[:place_id])
+      #^This is going to find the place with the right paramaters
         @place.photos.create(photo_params)
-            redirect_to place_path(@place) 
+        #^This is going to create a photo using the parameters
+            redirect_to place_path(@place)
+            #^ This puts us back on the previous page
     end
     
-    def show
+    def show #This will show the photo after it finds the right parameters
         @photos = Photo.find(params[:id])
     end
     
     def edit
         @photo = Photo.find(params[:id])
         
-        if @photo.user != current_user
+        if @photo.user != current_user #If the owner of the photo is the user that is logged in they can edit the photo.
             return render text: 'Not Allowed', status: :forbidden
         end
     end
     
-    def update
+    def update #This updates the page with my new photo as long as it meets the requirements, otherwise it will fail.
         @photo = Photo.find(params[:id])
         
-            if @photo.user != current_user
+            if @photo.user != current_user 
                 return render text: 'Not Allowed', status: :forbidden
             end
             
@@ -42,7 +45,7 @@ class PhotosController < ApplicationController
         end
     end
     
-    def destroy
+    def destroy #This will destroy the photo as long as the photo meets the set parameter
         @photo = Photo.find(params[:id])
             if @photo.user != current_user
                 return render text: 'Not Allowed', status: :forbidden
@@ -53,7 +56,7 @@ class PhotosController < ApplicationController
     
     private
     
-    def photo_params
+    def photo_params #The parameters require a photo and when it gets the photo it permits the program to display a caption and the picture.
         params.require(:photo).permit(:caption, :picture)
     end
 
